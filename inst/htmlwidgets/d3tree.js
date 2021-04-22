@@ -27,16 +27,16 @@ HTMLWidgets.widget({
 
     var chartWidth = el.getBoundingClientRect().width;
     var chartHeight = el.getBoundingClientRect().height;
-    var xscale = d3.scale.linear().range([0, chartWidth]);
-    var yscale = d3.scale.linear().range([0, chartHeight]);
-    var color = d3.scale.category10();
+    var xscale = d3_3.scale.linear().range([0, chartWidth]);
+    var yscale = d3_3.scale.linear().range([0, chartHeight]);
+    var color = d3_3.scale.category10();
     var headerHeight = 20;
     var headerColor = "#555555";
     var transitionDuration = 500;
     var root;
     var node;
 
-    var treemap = d3.layout.treemap()
+    var treemap = d3_3.layout.treemap()
         .round(false)
         .size([chartWidth, chartHeight])
         .sticky(true)
@@ -44,7 +44,7 @@ HTMLWidgets.widget({
             return d.size;
         });
 
-    var svg = d3.select(el)
+    var svg = d3_3.select(el)
         .append("svg:svg")
         .attr("width", chartWidth)
         .attr("height", chartHeight);
@@ -187,13 +187,13 @@ HTMLWidgets.widget({
             })
             .on("mouseover", function() {
                 this.parentNode.appendChild(this); // workaround for bringing elements to the front (ie z-index)
-                d3.select(this)
+                d3_3.select(this)
                     .attr("filter", "url(#outerDropShadow)")
                     .select(".background")
                     .style("stroke", "#000000");
             })
             .on("mouseout", function() {
-              d3.select(this)
+              d3_3.select(this)
                     .attr("filter", "")
                     .select(".background")
                     .style("stroke", "#FFFFFF");
@@ -253,7 +253,7 @@ HTMLWidgets.widget({
         childrenCells.exit()
             .remove();
 
-        d3.select("select").on("change", function() {
+        d3_3.select("select").on("change", function() {
             console.log("select zoom(node)");
             treemap.value(this.value == "size" ? size : count)
                 .nodes(root);
@@ -326,7 +326,7 @@ HTMLWidgets.widget({
                 return "translate(" + xscale(d.x) + "," + yscale(d.y) + ")";
             })
             .each("start", function() {
-                d3.select(this).select("label")
+                d3_3.select(this).select("label")
                     .style("display", "none");
             })
             .each("end", function(d, i) {
@@ -383,8 +383,8 @@ HTMLWidgets.widget({
 
         node = d;
 
-        if (d3.event) {
-            d3.event.stopPropagation();
+        if (d3_3.event) {
+            d3_3.event.stopPropagation();
         }
     }
 

@@ -29,10 +29,10 @@ HTMLWidgets.widget({
     var margin = {top: 20, right: 0, bottom: 20, left: 0},
         width = el.getBoundingClientRect().width,
         height = el.getBoundingClientRect().height - margin.top - margin.bottom,
-        formatNumber = d3.format(",d"),
+        formatNumber = d3_3.format(",d"),
         transitioning;
 
-    var svg = d3.select(el).append("svg")
+    var svg = d3_3.select(el).append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.bottom + margin.top)
         .style("margin-left", -margin.left + "px")
@@ -64,15 +64,15 @@ HTMLWidgets.widget({
       height = height - legend[0][0].getBoundingClientRect().height;
     }
 
-    var xscale = d3.scale.linear()
+    var xscale = d3_3.scale.linear()
         .domain([0, width])
         .range([0, width]);
 
-    var yscale = d3.scale.linear()
+    var yscale = d3_3.scale.linear()
         .domain([0, height])
         .range([0, height]);
 
-    var color = d3.scale.category20();
+    var color = d3_3.scale.category20();
     color.range(
       color.range().map(
         function(d,i){
@@ -81,7 +81,7 @@ HTMLWidgets.widget({
       )
     );
 
-    var treemap = d3.layout.treemap()
+    var treemap = d3_3.layout.treemap()
         .children(function(d, depth) { return depth ? null : d._children; })
         .sort(function(a, b) { return a[valueField] - b[valueField]; })
         .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
@@ -109,7 +109,7 @@ HTMLWidgets.widget({
     //  copied from
 
     function getRGBComponents(color) {
-        return d3.rgb(color)
+        return d3_3.rgb(color)
     }
 
     function idealTextColor(bgColor) {

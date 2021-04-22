@@ -35,3 +35,8 @@ d3tree2(
   , celltext = "name"
 )
 ```
+
+### Compatibility with D3 v4 and above
+
+This package uses d3 v3 and is not compatible with many other packages that use other versions of d3.
+The version of d3 has been renamed to d3_3 to allow it to be compatible.
